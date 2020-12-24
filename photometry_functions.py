@@ -210,8 +210,17 @@ def airPLS(x, lambda_=100, porder=1, itermax=15):
         w[-1]=w[0]
     return z
 
+#'organized/833HLS1right_1/raw_833HLS1right_1.csv'
 
-df = pd.read_csv('tblTest.csv')
+#'organized/833HLS1left_0/raw_833HLS1left_0.csv'
+#'organized/835HLS1left_0/raw_835HLS1left_0.csv'
+#'organized/835HLS1leftfootdrop/raw_835HLS1leftfootdrop.csv'
+#'organized/833HLS1right_footdrop/raw_833HLS1right_footdrop.csv'
+
+
+# df = pd.read_csv('tblTest.csv')
+
+df = pd.read_csv('organized/833HLS1right_footdrop/raw_833HLS1right_footdrop.csv')
 print(df.head())
 print(df.dtypes)
 
@@ -220,6 +229,15 @@ raw405 = df['Iso'].to_numpy()
 raw465 = df['Gca'].to_numpy()
 size = np.size(raw405)
 
+'''
+ceiling= np.percentile(df[dff], 10)
+print(ceiling)
+# print(max_value)
+# print(max_10p)
+
+df2.loc[df2[dff] >= ceiling] = ceiling
+max2 = np.max(df2[dff])
+'''
 print(times)
 print(raw465)
 
@@ -232,7 +250,9 @@ zDF  = pd.DataFrame({'Time': times, 'dFF': zdFF})
 print(zDF.head())
 print(zDF.dtypes)
 
-zDF.to_csv('zDFF_test.csv', index=False)
+zDF.to_csv('zDFF_833HLS1right_footdrop.csv', index=False)
+
+
 
 # time = np.array(time)
 # f405 = np.array(f405)

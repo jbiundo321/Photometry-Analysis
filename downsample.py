@@ -14,18 +14,12 @@ import datetime
 # 3:54.570
 # 4:23.638
 # 4:43.962
-df = pd.read_csv('stim_test.csv', names=['file', 'index', 'timestamps', 'limb', 'stim_type'])
-time_list = df['timestamps'].tolist()
-print(df.head())
-print(df.dtypes)
+stimsDF = pd.read_csv('stim_test.csv', names=['file', 'index', 'timestamps', 'limb', 'stim_type'])
+time_list = stimsDF['timestamps'].tolist()
+print(stimsDF.head())
+print(stimsDF.dtypes)
 print(time_list)
 
-test = ['167.424', '192.102', '3:12.102', '3:22.619']
-
-time_string = '3:12.102'
-date_time = datetime.datetime.strptime(time_string, "%M:%S.%f")
-a_timedelta = date_time - datetime.datetime(1900, 1, 1)
-seconds = a_timedelta.total_seconds()
 
 seconds_list = []
 for t in range(len(time_list)):
@@ -128,6 +122,13 @@ testDF.to_csv('downsampled.csv', index=False)
 #zDF  = pd.DataFrame({'time': times, 'zDFF': zdFF})
 # print(zDF.head())
 # print(zDF.dtypes)
+
+    #duation of response
+
+    # duration_start = trials[i] + latencies[i]
+    # between= df[timestamp].between(duration_start,stim2, inclusive=True)
+    # df[dff].loc[in_between] <= baselines[i]
+    # print(df['dFF'].loc[in_between.loc[in_between.iloc[5]:]] <= baselines[i])
 
 '''
 
